@@ -1,0 +1,14 @@
+[
+  {"id": 1, "tool": "schema_browse"},
+  {"id": 2, "tool": "audience_count"},
+  {"id": 3, "tool": "query_run", "sql": "SELECT email, first_name, country FROM recipients LIMIT 50", "returns_rows": true, "fields": ["email", "first_name", "country"],
+   "sample": [{"email": "maja.novak@example.com", "first_name": "Maja", "country": "SI"}, {"email": "nikos.p@example.com", "first_name": "Nikos", "country": "GR"}]},
+  {"id": 4, "tool": "query_run", "sql": "SELECT country, COUNT(*) FROM recipients GROUP BY country"},
+  {"id": 5, "tool": "query_run", "sql": "DELETE FROM recipients WHERE optin = 0"},
+  {"id": 6, "tool": "js_execute", "script": "logInfo(xtk.queryDef.create(q).ExecuteQuery())"},
+  {"id": 7, "tool": "data_export", "rows": 50000},
+  {"id": 8, "tool": "delivery_send", "delivery": "BF-AT-01", "qa_passed": true, "volume": 84000},
+  {"id": 9, "tool": "delivery_send", "delivery": "BF-HU-01", "qa_passed": true, "volume": 240000},
+  {"id": 10, "tool": "delivery_send", "delivery": "BF-SI-01", "qa_passed": false, "volume": 61000},
+  {"id": 11, "tool": "privacy_purge_pause"}
+]
